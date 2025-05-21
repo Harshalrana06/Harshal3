@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harshal Rana - Portfolio</title>
+    <title>Harshal Rana - Animated Portfolio</title>
     <link rel="icon" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -16,23 +16,25 @@
             background-color: #000;
             color: #fff;
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for theme change */
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px) saturate(180%);
+            -webkit-backdrop-filter: blur(14px) saturate(180%);
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.5s ease, border-color 0.5s ease;
         }
         .glass:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(132, 204, 22, 0.5);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(20, 184, 166, 0.4);
         }
         .icon {
             width: 1.5rem;
             height: 1.5rem;
+            filter: invert(0%);
         }
         #scroll-top {
             position: fixed;
@@ -66,21 +68,20 @@
             50% { box-shadow: 0 0 20px #a3e635; }
         }
 
-        /* Light Mode Styles */
         body.light-mode {
-            background-color: #f8fafc; /* Light background */
-            color: #1a202c; /* Dark text */
+            background-color: #fff;
+            color: #1a202c;
         }
         body.light-mode header {
-            background-color: #e2e8f0; /* Lighter header */
+            background-color: #e2e8f0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         body.light-mode header h1,
         body.light-mode header nav a {
-            color: #1a202c; /* Dark text for header */
+            color: #1a202c;
         }
         body.light-mode header nav a:hover {
-            color: #4a5568; /* Darker hover for header */
+            color: #4a5568;
         }
         body.light-mode .glass {
             background: rgba(255, 255, 255, 0.8);
@@ -88,17 +89,17 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         body.light-mode .glass:hover {
-            box-shadow: 0 6px 20px rgba(74, 85, 104, 0.3); /* Subtle dark glow */
+            box-shadow: 0 6px 20px rgba(74, 85, 104, 0.3);
         }
         body.light-mode .text-lime-400 {
-            color: #4a5568; /* Darker accent color */
+            color: #4a5568;
         }
         body.light-mode .text-lime-300 {
-            color: #2d3748; /* Even darker accent color */
+            color: #2d3748;
         }
         body.light-mode .text-gray-300,
         body.light-mode .text-gray-200 {
-            color: #4a5568; /* Darker gray text */
+            color: #4a5568;
         }
         body.light-mode #scroll-top {
             background: #4a5568;
@@ -108,16 +109,16 @@
             background: #2d3748;
         }
         body.light-mode .bg-black {
-            background-color: #e2e8f0; /* Lighter background for elements */
+            background-color: #e2e8f0;
         }
         body.light-mode .bg-opacity-70 {
-            background-color: rgba(226, 232, 240, 0.9); /* Lighter background with opacity */
+            background-color: rgba(226, 232, 240, 0.9);
         }
         body.light-mode .border-lime-400 {
-            border-color: #4a5568; /* Darker border color */
+            border-color: #4a5568;
         }
         body.light-mode .icon {
-            filter: invert(100%) hue-rotate(180deg) brightness(50%); /* Adjust icon color for light mode */
+            filter: invert(0%);
         }
         body.light-mode .bg-lime-400 {
             background-color: #4a5568;
@@ -125,6 +126,33 @@
         }
         body.light-mode .hover\:bg-lime-500:hover {
             background-color: #2d3748;
+        }
+
+        @media (max-width: 767px) {
+            header .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            #mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding-bottom: 1rem;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-out;
+            }
+            #mobile-menu.active {
+                transform: translateY(0);
+            }
+            body.light-mode #mobile-menu {
+                background-color: rgba(226, 232, 240, 0.95);
+            }
+            body.light-mode #mobile-menu nav a {
+                color: #1a202c;
+            }
         }
     </style>
 </head>
@@ -138,25 +166,35 @@
                 <a href="#hobbies" class="hover:text-lime-400 transition-colors">Hobbies</a>
                 <a href="#role-model" class="hover:text-lime-400 transition-colors">Role Model</a>
                 <a href="#goals" class="hover:text-lime-400 transition-colors">Dreams</a>
-                <a href="#contact-form" class="hover:text-lime-400 transition-colors">Contact</a>
+                <a href="#contact-section" class="hover:text-lime-400 transition-colors">Contact</a>
             </nav>
             <div class="flex items-center">
                 <button id="theme-toggle" class="text-lime-400 text-xl focus:outline-none ml-4">🌓</button>
                 <button id="menu-toggle" class="md:hidden text-lime-400 text-3xl focus:outline-none ml-4">☰</button>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden px-4 pt-4 pb-2">
+            <nav class="flex flex-col space-y-2 text-center text-gray-300 font-medium">
+                <a href="#about" class="block py-2 hover:text-lime-400 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+                <a href="#achievements" class="block py-2 hover:text-lime-400 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Achievements</a>
+                <a href="#hobbies" class="block py-2 hover:text-lime-400 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Hobbies</a>
+                <a href="#role-model" class="block py-2 hover:text-lime-400 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Role Model</a>
+                <a href="#goals" class="block py-2 hover:text-lime-400 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Dreams</a>
+                <a href="#contact-section" class="block py-2 hover:text-lime-400 transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <main class="container mx-auto px-4 py-12 space-y-24">
 
         <section id="about" class="text-center" data-aos="fade-up">
-           <img src="img3.jpg" alt="Harshal" class="mx-auto w-36 h-36 border-4 border-lime-400 object-cover shadow-xl" />
-            <h2 class="text-4xl font-bold mt-6 mb-2 text-lime-400 section-title">Hello, I'm Harshal Rana</h2>
-            <p class="text-lg text-gray-300">I am an aspiring engineer driven by a deep passion for creating impactful digital experiences that blend innovation, functionality, and user-centric design. My goal is to leverage technology to solve real-world problems and build solutions that make a meaningful difference in people's lives.</p>
+            <img src="img3.jpg" alt="Harshal" class="mx-auto w-36 h-36 rounded-full border-4 border-lime-400 object-cover shadow-xl" />
+            <h2 class="text-4xl sm:text-5xl font-bold mt-6 mb-2 text-lime-400 section-title">Hello, I'm Harshal Rana</h2>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">I am an aspiring engineer driven by a deep passion for creating impactful digital experiences that blend innovation, functionality, and user-centric design. My goal is to leverage technology to solve real-world problems and build solutions that make a meaningful difference in people's lives.</p>
         </section>
 
         <section id="achievements" data-aos="zoom-in-up">
-            <h2 class="text-3xl font-bold text-center text-lime-400 section-title">Achievements</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-lime-400 section-title">Achievements</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 <div class="glass p-6 text-center">
                     <h3 class="text-xl font-semibold text-lime-300 mb-2">Certifications</h3>
@@ -174,17 +212,17 @@
         </section>
 
         <section id="hobbies" class="text-left" data-aos="fade-right">
-            <h2 class="text-3xl font-semibold text-lime-400 section-title">My Hobbies</h2>
-            <p class="text-lg text-gray-200 mt-4">• Learning new tech<br/>•  Contributing to Open Source Projects<br/>•  Exploring AI & Machine Learning<br/>• Reading biographies</p>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-lime-400 section-title">My Hobbies</h2>
+            <p class="text-lg text-gray-200 mt-4">• Learning new tech<br/>• Contributing to Open Source Projects<br/>• Exploring AI & Machine Learning<br/>• Reading biographies</p>
         </section>
 
         <section id="role-model" class="text-left" data-aos="fade-left">
-            <h2 class="text-3xl font-semibold text-lime-400 section-title">My Role Model</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-lime-400 section-title">My Role Model</h2>
             <p class="text-lg text-gray-200 mt-4">I admire <strong class="text-lime-300">Sam Altman</strong> He is the CEO of OpenAI, where he leads efforts in developing cutting-edge artificial intelligence technologies like ChatGPT. Before this, he was the president of Y Combinator and co-founded Loopt, a location-based social networking app. Known for his visionary leadership, Altman is a prominent voice in tech, advocating for the ethical and responsible development of artificial general intelligence.</p>
         </section>
 
         <section id="goals" class="text-left" data-aos="fade-up">
-            <h2 class="text-3xl font-semibold text-lime-400 section-title">My Dreams</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-lime-400 section-title">My Dreams</h2>
             <p class="text-lg text-gray-200 mt-4">my dreams revolve around creating technology that truly transforms lives and drives humanity forward. I aspire to design innovative solutions that solve real-world problems—whether through smarter infrastructure, sustainable energy, advanced robotics, or intuitive software. My ultimate goal is to leave a lasting impact by building systems and tools that are not only efficient and intelligent but also ethical and accessible to all.</p>
         </section>
 
@@ -192,7 +230,7 @@
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
                 <div>
-                    <h2 class="text-3xl font-semibold mb-6 text-lime-400">Send Me a Message</h2>
+                    <h2 class="text-3xl sm:text-4xl font-semibold mb-6 text-lime-400">Send Me a Message</h2>
                     <form
                         action="mailto:harshalrana845@gmail.com"
                         method="POST"
@@ -200,38 +238,38 @@
                         class="w-full bg-black bg-opacity-40 p-6 rounded-lg border border-lime-400"
                     >
                         <div class="mb-4">
-                            <label for="name" class="block mb-2 text-gray-200 font-medium">Name</label>
+                            <label for="name" class="block mb-2 text-gray-200 font-medium text-base sm:text-lg">Name</label>
                             <input
                                 type="text"
                                 id="name"
                                 name="Name"
                                 required
-                                class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-300"
+                                class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-300 text-base sm:text-lg"
                             />
                         </div>
                         <div class="mb-4">
-                            <label for="email" class="block mb-2 text-gray-200 font-medium">Email</label>
+                            <label for="email" class="block mb-2 text-gray-200 font-medium text-base sm:text-lg">Email</label>
                             <input
                                 type="email"
                                 id="email"
                                 name="Email"
                                 required
-                                class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-300"
+                                class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-300 text-base sm:text-lg"
                             />
                         </div>
                         <div class="mb-6">
-                            <label for="message" class="block mb-2 text-gray-200 font-medium">Message</label>
+                            <label for="message" class="block mb-2 text-gray-200 font-medium text-base sm:text-lg">Message</label>
                             <textarea
                                 id="message"
                                 name="Message"
                                 rows="5"
                                 required
-                                class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-300"
+                                class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-300 text-base sm:text-lg"
                             ></textarea>
                         </div>
                         <button
                             type="submit"
-                            class="bg-lime-400 hover:bg-lime-500 text-black font-semibold py-2 px-6 rounded-md transition-all duration-200"
+                            class="bg-lime-400 hover:bg-lime-500 text-black font-semibold py-2 px-6 rounded-md transition-all duration-200 text-base sm:text-lg"
                         >
                             Send Message
                         </button>
@@ -239,27 +277,32 @@
                 </div>
 
                 <div class="space-y-6 text-center">
-                    <h2 class="text-3xl font-semibold text-lime-400">Connect with Me</h2>
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-lime-400">Connect with Me</h2>
 
-                    <div class="flex justify-center space-x-6">
-                        <a href="tel:+918149467994" title="Call" class="hover:scale-110 transition-transform">
+                    <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                        <a href="tel:+918149467994" title="Call" class="hover:scale-110 transition-transform flex items-center flex-col text-gray-300 text-sm sm:text-base">
                             <img src="https://img.icons8.com/ios-filled/50/84cc16/phone.png" alt="Phone" class="icon" />
+                            <span class="mt-1">Call</span>
                         </a>
-                        <a href="mailto:harshalrana845@gmail.com" title="Email" class="hover:scale-110 transition-transform">
+                        <a href="mailto:harshalrana845@gmail.com" title="Email" class="hover:scale-110 transition-transform flex items-center flex-col text-gray-300 text-sm sm:text-base">
                             <img src="https://img.icons8.com/ios-filled/50/84cc16/new-post.png" alt="Email" class="icon" />
+                            <span class="mt-1">Email</span>
                         </a>
-                        <a href="https://wa.me/918149467994" target="_blank" rel="noopener noreferrer" title="WhatsApp" class="hover:scale-110 transition-transform">
+                        <a href="https://wa.me/918149467994" target="_blank" rel="noopener noreferrer" title="WhatsApp" class="hover:scale-110 transition-transform flex items-center flex-col text-gray-300 text-sm sm:text-base">
                             <img src="https://img.icons8.com/ios-filled/50/84cc16/whatsapp.png" alt="WhatsApp" class="icon" />
+                            <span class="mt-1">WhatsApp</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/harshal-rana-78b076297/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="hover:scale-110 transition-transform">
+                        <a href="https://www.linkedin.com/in/harshal-rana-78b076297/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="hover:scale-110 transition-transform flex items-center flex-col text-gray-300 text-sm sm:text-base">
                             <img src="https://img.icons8.com/ios-filled/50/84cc16/linkedin.png" alt="LinkedIn" class="icon" />
+                            <span class="mt-1">LinkedIn</span>
                         </a>
-                        <a href="https://github.com/Harshalrana06" target="_blank" rel="noopener noreferrer" title="GitHub" class="hover:scale-110 transition-transform">
+                        <a href="https://github.com/Harshalrana06" target="_blank" rel="noopener noreferrer" title="GitHub" class="hover:scale-110 transition-transform flex items-center flex-col text-gray-300 text-sm sm:text-base">
                             <img src="https://img.icons8.com/ios-glyphs/50/84cc16/github.png" alt="GitHub" class="icon" />
+                            <span class="mt-1">GitHub</span>
                         </a>
                     </div>
 
-                    <h3 class="text-2xl font-semibold text-lime-300 mt-8">My Location</h3>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-lime-300 mt-8">My Location</h3>
 
                     <iframe
                         src="https://maps.google.com/maps?q=Mumbai&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -272,12 +315,12 @@
         </section>
 
         <section id="quote-of-the-day" class="text-center" data-aos="fade-up">
-            <h2 class="text-2xl font-semibold text-lime-400 section-title mb-4">Quote of the Day</h2>
-            <p id="quote-text" class="text-lg text-gray-200 animate-pulse">Loading...</p>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-lime-400 section-title mb-4">Quote of the Day</h2>
+            <p id="quote-text" class="text-lg text-gray-200 animate-pulse max-w-2xl mx-auto">Loading...</p>
         </section>
     </main>
 
-    <footer class="text-center py-4 bg-black bg-opacity-70 text-gray-400">
+    <footer class="text-center py-4 bg-black bg-opacity-70 text-gray-400 text-sm sm:text-base">
         <p>© 2025 Harshal Rana. All rights reserved.</p>
     </footer>
 
@@ -290,11 +333,11 @@
         window.onscroll = () => scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
         scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Theme Toggle Logic
         const themeToggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggleBtn = document.getElementById('menu-toggle');
 
-        // Function to set theme
         function setTheme(theme) {
             if (theme === 'light') {
                 body.classList.add('light-mode');
@@ -306,16 +349,13 @@
             localStorage.setItem('theme', theme);
         }
 
-        // Apply saved theme on load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
         } else {
-            // Default to dark mode if no preference is saved
             setTheme('dark');
         }
 
-        // Toggle theme on button click
         themeToggleBtn.addEventListener('click', () => {
             if (body.classList.contains('light-mode')) {
                 setTheme('dark');
@@ -324,7 +364,18 @@
             }
         });
 
-        // Fetch Quote of the Day
+        menuToggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
         fetch('https://zenquotes.io/api/random')
             .then(res => res.json())
             .then(data => {
